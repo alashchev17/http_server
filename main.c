@@ -22,17 +22,17 @@ int main(void) {
 void index_page(int conn, HTTPreq *request) {
     printf("Method: %s\nPath: %s\nProtocol: %s\n\n", request->method, request->path, request->proto);
     if (strcmp(request->path, "/") != 0) {
-        parsehtml_http(conn, "page404.html");
+        parsehtml_http(conn, "page404.html", 404);
         return;
     }
-    parsehtml_http(conn, "index.html");
+    parsehtml_http(conn, "index.html", 200);
 
 }
 void about_page(int conn, HTTPreq *request) {
     printf("Method: %s\nPath: %s\nProtocol: %s\n\n", request->method, request->path, request->proto);
     if (strcmp(request->path, "/about/") != 0) {
-        parsehtml_http(conn, "page404.html");
+        parsehtml_http(conn, "page404.html", 404);
         return;
     }
-    parsehtml_http(conn, "about.html");
+    parsehtml_http(conn, "about.html", 200);
 }

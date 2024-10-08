@@ -25,6 +25,7 @@ static void _parse_request(HTTPreq *request, char *buffer, size_t size);
 static void _null_request(HTTPreq *request);
 static int8_t _switch_http(HTTP *http, int conn, HTTPreq *request);
 static void _page404_http(int conn);
+static const char* _get_status_code(int status_code);
 
 extern HTTP *new_http(char *address) {
 	HTTP *http = (HTTP*)malloc(sizeof(HTTP));
@@ -84,8 +85,10 @@ extern int8_t listen_http(HTTP *http) {
 	return 0;
 }
 
-extern void parsehtml_http(int conn, char *filename) {
-	char buffer[BUFSIZ] = "HTTP/1.1 200 OK\nContent-type: text/html\n\n";
+extern void parsehtml_http(int conn, char *filename, int status_code) {
+	const char *status_line = _get_status_code(status_code);
+	char buffer[BUFSIZ];
+	snprintf(buffer, BUFSIZ, "%s\n", status_line);
 	size_t readsize = strlen(buffer);
 	send_net(conn, buffer, readsize);
 	FILE *file = fopen(filename, "r");
@@ -108,9 +111,16 @@ static HTTPreq _new_request(void) {
 	};
 }
 
-/*
-	GET /books HTTP/1.1
-*/
+static const char* _get_status_code(int status_code) {
+	switch (status_code) {
+		case 200: 
+			return "HTTP/1.1 200 OK\nContent-Type: text/html\n";
+		case 404: 
+			return "HTTP/1.1 404 Not Found\nContent-Type: text/html\n";
+		default: 
+			return "HTTP/1.1 500 Internal Server Error\nContent-Type: text/plain\n";
+	}
+}
 
 static void _parse_request(HTTPreq *request, char *buffer, size_t size) {
 	printf("%s\n", buffer);

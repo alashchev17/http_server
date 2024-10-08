@@ -19,6 +19,6 @@ extern void free_http(HTTP *http);
 extern void handle_http(HTTP *http, char *path, void(*)(int, HTTPreq*));
 extern int8_t listen_http(HTTP *http);
 
-extern void parsehtml_http(int conn, char *filename);
+extern void parsehtml_http(int conn, char *filename, int status_code);
 
 #endif /* EXTCLIB_HTTP_H_ */
