@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "amp_graphics.h": "c",
+        "net.h": "c",
+        "stdio.h": "c",
+        "ctype.h": "c"
+    }
+}
