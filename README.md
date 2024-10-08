@@ -21,8 +21,6 @@ http_server/
 │ ├── hashtab.h
 │ ├── hashtab.c
 │ └── Makefile
-├── .vscode/
-│ └── settings.json
 ├── about.html
 ├── index.html
 ├── page404.html
