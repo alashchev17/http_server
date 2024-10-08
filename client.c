@@ -9,7 +9,7 @@
 extern void inputs_io(char *buffer, size_t size);
 
 int main(void) {
-    int conn = connect_net("127.0.0.1:8080");
+    int conn = connect_net("127.0.0.100:8080");
 	if (conn < 0) {
         fprintf(stderr, "Error: %d (CONNECT_ERR)\n", conn);
         return 1;

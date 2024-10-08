@@ -9,7 +9,7 @@ void about_page(int conn, HTTPreq *request);
 
 int main(void) {
     HTTP *serve = new_http("127.0.0.1:8080");
-    
+    printf("Server has been started on 127.0.0.1:8080\n");
     handle_http(serve, "/", index_page);
     handle_http(serve, "/about/", about_page);
 
