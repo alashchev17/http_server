@@ -7,7 +7,7 @@
 ## Project Structure
 
 The project is organized into the following directories and files:
-
+```tree
 http_server/
 ├── extclib/
 │ ├── http.h
@@ -31,7 +31,7 @@ http_server/
 ├── client.c
 ├── Makefile
 └── README.md
-
+```
 
 ### Key Components
 
