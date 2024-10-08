@@ -73,7 +73,7 @@ http_server/
 - A C compiler (e.g., `gcc`)
 - `make` utility
 
-### Build
+### Build & Run
 
 To build the project, navigate to the `extclib` directory and run:
 
@@ -84,7 +84,7 @@ make
 then navigate to the root directory and run:
 
 ```sh
-gcc main.c extclib/extclib.o -o main -lws2_32
+make
 ```
 
 
@@ -104,7 +104,7 @@ To run the client, execute the following command:
 
 ### Run (HTTP Server)
 
-To start the HTTP server, execute the following command:
+To start the HTTP server binary (already build), execute the following command:
 
 ```sh
 ./main
